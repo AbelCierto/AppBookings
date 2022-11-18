@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/bookings")
 @Api(tags = "Booking", value = "Web Service RESTful of Bookings")
