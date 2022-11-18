@@ -13,11 +13,11 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    public Optional<User> findByUsername(String userName){
-        return userRepository.findByUsername(userName);
+    public Optional<User> findByUserName(String userName){
+        return userRepository.findByUserName(userName);
     }
     public boolean existsByUsername(String userName){
-        return userRepository.existsByUsername(userName);
+        return userRepository.existsByUserName(userName);
     }
     public boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
