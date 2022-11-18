@@ -5,6 +5,7 @@ import com.booking.appbookings.service.ICustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -103,6 +104,7 @@ public class CustomerController {
     }
 
     //http://localhost:8080/api/customers
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> insertCustomer(@Valid @RequestBody Customer customer){
         try {
@@ -113,6 +115,7 @@ public class CustomerController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> updateCustomer(@PathVariable("id") Long id, @Valid @RequestBody Customer customer){
         try {
@@ -127,6 +130,7 @@ public class CustomerController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") Long id){
         try {
